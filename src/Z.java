@@ -28,8 +28,8 @@ public class Z {
 		double k = other.times(coupled).re;
 		return this.times(coupled).divide(k);
 	}
-	public Z divide(double k)
-	{
-		return this.times(1/k);
+
+	public Z divide(double k) {
+		return this.times(1 / k);
 	}
 }
