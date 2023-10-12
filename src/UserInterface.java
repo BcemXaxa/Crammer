@@ -15,7 +15,7 @@ public class UserInterface {
 
 
 	static public void handleException(Exception exception) {
-		System.out.printf("Error: %s%n", exception.getMessage());
+		System.out.printf("%sError:%s %s%n", RED, RESET, exception.getMessage());
 		scanner = new Scanner(System.in);
 	}
 
@@ -69,8 +69,14 @@ public class UserInterface {
 		}
 	}
 
+	static public String askForFile()
+	{
+		System.out.printf("Enter the name of your file: ");
+		return scanner.next();
+	}
+
 	static public void askForInputMethod() throws Exception {
-		System.out.printf("Choose your input method:%n");
+		System.out.printf("%sChoose your input method:%s%n", CYAN, RESET);
 		System.out.printf("[F]ile\t\t[C]onsole%n");
 		char input = getChar();
 		switch (input) {
@@ -126,8 +132,15 @@ public class UserInterface {
 				independent[i] = new Z(getDouble(), getDouble());
 			}
 		} else if (mode == InputMode.FILE) {
-			Path path = Path.of("src/example1.txt");
-			InputStream is = Files.newInputStream(path.toAbsolutePath());
+			String file = askForFile();
+			Path path = Path.of("src", file).toAbsolutePath();
+			System.out.printf("Chosen path: %s%n", path);
+
+			if (!Files.exists(path)) {
+				throw new Exception("file \"" + file + "\" doesn't exist");
+			}
+
+			InputStream is = Files.newInputStream(path);
 			Scanner fileScanner = new Scanner(is);
 
 			n = getInt(fileScanner);
@@ -154,4 +167,14 @@ public class UserInterface {
 			System.out.printf("X%s: %.3f + %.3fi%n", (i + 1), solutions[i].re, solutions[i].im);
 		}
 	}
+
+	public static final String RESET = "\u001B[0m";
+	public static final String RED = "\u001B[31m";
+	public static final String GREEN = "\u001B[32m";
+	public static final String YELLOW = "\u001B[33m";
+	public static final String CYAN = "\u001B[36m";
+	public static final String BLACK = "\u001B[30m";
+	public static final String BLUE = "\u001B[34m";
+	public static final String PURPLE = "\u001B[35m";
+	public static final String WHITE = "\u001B[37m";
 }
