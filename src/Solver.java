@@ -1,19 +1,22 @@
+import Units.Unit;
+
 public class Solver {
-	public final Z[][] coefficients;
-	public final Z[] independent;
-	public final Z[] solutions;
-	public Solver(Z[][] coefficients, Z[] independent)
-	{
+	public final Unit[][] coefficients;
+	public final Unit[] independent;
+	public final Unit[] solutions;
+
+	public Solver(Unit[][] coefficients, Unit[] independent) throws Exception{
 		this.coefficients = coefficients;
 		this.independent = independent;
 		this.solutions = solutions();
 	}
-	private Z[] solutions() {
-		int length = independent.length;
-		Z[] solutions = new Z[length];
 
-		Z primaryDeterminant = determinant(coefficients);
-		Z secondaryDeterminant;
+	private Unit[] solutions() throws Exception {
+		int length = independent.length;
+		Unit[] solutions = new Unit[length];
+
+		Unit primaryDeterminant = determinant(coefficients);
+		Unit secondaryDeterminant;
 
 		for (int i = 0; i < length; i++) {
 			secondaryDeterminant = determinant(rewriteColumn(coefficients, independent, i));
@@ -23,9 +26,9 @@ public class Solver {
 		return solutions;
 	}
 
-	private Z[][] rewriteColumn(Z[][] initial, Z[] insert, int column) {
+	private Unit[][] rewriteColumn(Unit[][] initial, Unit[] insert, int column) {
 		int length = initial.length;
-		Z[][] result = new Z[length][length];
+		Unit[][] result = new Unit[length][length];
 		for (int row = 0; row < length; row++) {
 			for (int col = 0; col < length; col++) {
 				if (col != column) {
@@ -38,12 +41,12 @@ public class Solver {
 		return result;
 	}
 
-	private Z determinant(Z[][] coefficients) {
+	private Unit determinant(Unit[][] coefficients) throws Exception {
 		int length = coefficients.length;
-		Z result = new Z(0, 0);
+		Unit result = coefficients[0][0].zeroInstance();
 		if (length > 2) {
 			for (int i = 0; i < length; i++) {
-				Z[][] temporary = buildTemporary(coefficients, 0, i);
+				Unit[][] temporary = buildTemporary(coefficients, 0, i);
 				result = result.plus(coefficients[0][i].times(determinant(temporary)).times(Math.pow(-1, 1 + i)));
 			}
 		} else {
@@ -52,9 +55,9 @@ public class Solver {
 		return result;
 	}
 
-	public Z[][] buildTemporary(Z[][] initial, int banRow, int banCol) {
+	public Unit[][] buildTemporary(Unit[][] initial, int banRow, int banCol) {
 		int length = initial.length;
-		Z[][] temporary = new Z[length - 1][length - 1];
+		Unit[][] temporary = new Unit[length - 1][length - 1];
 
 		int subRow = 0;
 		for (int row = 0; row < length; row++) {
