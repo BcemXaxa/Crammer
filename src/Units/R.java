@@ -13,6 +13,14 @@ public class R implements Unit {
 	}
 
 	@Override
+	public boolean equals(Unit other) {
+		if (other instanceof R r) {
+			return this.r == r.r;
+		}
+		return false;
+	}
+
+	@Override
 	public Unit plus(Unit other) throws Exception {
 		if (other instanceof R r) {
 			return new R(this.r + r.r);

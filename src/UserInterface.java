@@ -1,3 +1,6 @@
+import Solvers.Crammer;
+import Solvers.Gauss;
+import Solvers.Solver;
 import Units.R;
 import Units.Unit;
 import Units.Z;
@@ -198,7 +201,7 @@ public class UserInterface {
 			default -> throw new Exception("impossible");
 		}
 
-		return new Solver(coefficients, independent);
+		return new Crammer(coefficients, independent);
 	}
 
 	static public void printSolutions(Unit[] solutions) {

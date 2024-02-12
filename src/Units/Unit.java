@@ -2,6 +2,7 @@ package Units;
 
 public interface Unit {
 	Unit zeroInstance();
+	boolean equals(Unit other);
 
 	Unit plus(Unit other) throws Exception;
 

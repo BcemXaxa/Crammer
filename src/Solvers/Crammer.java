@@ -1,14 +1,22 @@
+package Solvers;
+
+import Units.R;
 import Units.Unit;
 
-public class Solver {
-	public final Unit[][] coefficients;
-	public final Unit[] independent;
-	public final Unit[] solutions;
+public class Crammer implements Solver {
+	private final Unit[][] coefficients;
+	private final Unit[] independent;
+	private final Unit[] solutions;
 
-	public Solver(Unit[][] coefficients, Unit[] independent) throws Exception{
+	public Crammer(Unit[][] coefficients, Unit[] independent) throws Exception {
 		this.coefficients = coefficients;
 		this.independent = independent;
 		this.solutions = solutions();
+	}
+
+	@Override
+	public Unit[] getSolutions() {
+		return solutions;
 	}
 
 	private Unit[] solutions() throws Exception {
@@ -16,10 +24,12 @@ public class Solver {
 		Unit[] solutions = new Unit[length];
 
 		Unit primaryDeterminant = determinant(coefficients);
+		System.out.println(((R)primaryDeterminant).r);
 		Unit secondaryDeterminant;
 
 		for (int i = 0; i < length; i++) {
 			secondaryDeterminant = determinant(rewriteColumn(coefficients, independent, i));
+			System.out.println(((R)secondaryDeterminant).r);
 			solutions[i] = secondaryDeterminant.divide(primaryDeterminant);
 		}
 
@@ -47,7 +57,7 @@ public class Solver {
 		if (length > 2) {
 			for (int i = 0; i < length; i++) {
 				Unit[][] temporary = buildTemporary(coefficients, 0, i);
-				result = result.plus(coefficients[0][i].times(determinant(temporary)).times(Math.pow(-1, 1 + i)));
+				result = result.plus(coefficients[0][i].times(determinant(temporary)).times(Math.pow(-1, i)));
 			}
 		} else {
 			result = coefficients[0][0].times(coefficients[1][1]).minus(coefficients[0][1].times(coefficients[1][0]));
@@ -55,7 +65,7 @@ public class Solver {
 		return result;
 	}
 
-	public Unit[][] buildTemporary(Unit[][] initial, int banRow, int banCol) {
+	private Unit[][] buildTemporary(Unit[][] initial, int banRow, int banCol) {
 		int length = initial.length;
 		Unit[][] temporary = new Unit[length - 1][length - 1];
 
