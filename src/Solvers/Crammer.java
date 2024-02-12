@@ -1,14 +1,21 @@
+package Solvers;
+
 import Units.Unit;
 
-public class Solver {
-	public final Unit[][] coefficients;
-	public final Unit[] independent;
-	public final Unit[] solutions;
+public class Crammer implements Solver {
+	private final Unit[][] coefficients;
+	private final Unit[] independent;
+	private final Unit[] solutions;
 
-	public Solver(Unit[][] coefficients, Unit[] independent) throws Exception{
+	public Crammer(Unit[][] coefficients, Unit[] independent) throws Exception {
 		this.coefficients = coefficients;
 		this.independent = independent;
 		this.solutions = solutions();
+	}
+
+	@Override
+	public Unit[] getSolutions() {
+		return solutions;
 	}
 
 	private Unit[] solutions() throws Exception {
@@ -55,7 +62,7 @@ public class Solver {
 		return result;
 	}
 
-	public Unit[][] buildTemporary(Unit[][] initial, int banRow, int banCol) {
+	private Unit[][] buildTemporary(Unit[][] initial, int banRow, int banCol) {
 		int length = initial.length;
 		Unit[][] temporary = new Unit[length - 1][length - 1];
 

@@ -1,3 +1,6 @@
+import Solvers.Crammer;
+import Solvers.Solver;
+
 import java.util.Locale;
 
 public class Main {
@@ -11,7 +14,7 @@ public class Main {
 			try {
 			UserInterface.askForInputMethod();
 			Solver solver = UserInterface.getInputs();
-			UserInterface.printSolutions(solver.solutions);
+			UserInterface.printSolutions(solver.getSolutions());
 
 			} catch (Exception exception) {
 				if (exception.getMessage().equals("should exit")) {

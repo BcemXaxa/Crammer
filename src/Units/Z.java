@@ -15,6 +15,14 @@ public class Z implements Unit {
 	}
 
 	@Override
+	public boolean equals(Unit other) {
+		if (other instanceof Z z) {
+			return this.re == z.re && this.im == z.im;
+		}
+		return false;
+	}
+
+	@Override
 	public Unit plus(Unit other) throws Exception {
 		if (other instanceof Z z) {
 			return new Z(this.re + z.re, this.im + z.im);
