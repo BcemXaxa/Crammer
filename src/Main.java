@@ -1,4 +1,3 @@
-import Solvers.Crammer;
 import Solvers.Solver;
 
 import java.util.Locale;
