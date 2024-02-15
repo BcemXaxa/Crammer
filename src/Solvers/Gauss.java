@@ -1,6 +1,5 @@
 package Solvers;
 
-import Units.R;
 import Units.Unit;
 
 public class Gauss implements Solver {

@@ -24,12 +24,10 @@ public class Crammer implements Solver {
 		Unit[] solutions = new Unit[length];
 
 		Unit primaryDeterminant = determinant(coefficients);
-		System.out.println(((R)primaryDeterminant).r);
 		Unit secondaryDeterminant;
 
 		for (int i = 0; i < length; i++) {
 			secondaryDeterminant = determinant(rewriteColumn(coefficients, independent, i));
-			System.out.println(((R)secondaryDeterminant).r);
 			solutions[i] = secondaryDeterminant.divide(primaryDeterminant);
 		}
 
