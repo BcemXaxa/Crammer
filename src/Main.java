@@ -1,4 +1,4 @@
-import Solvers.Solver;
+import Solvers.extended.Solver;
 
 import java.util.Locale;
 

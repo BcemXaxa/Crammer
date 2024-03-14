@@ -1,6 +1,5 @@
-import Solvers.Crammer;
-import Solvers.Gauss;
-import Solvers.Solver;
+import Solvers.extended.Crammer;
+import Solvers.extended.Solver;
 import Units.R;
 import Units.Unit;
 import Units.Z;

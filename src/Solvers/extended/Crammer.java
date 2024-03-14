@@ -1,6 +1,5 @@
-package Solvers;
+package Solvers.extended;
 
-import Units.R;
 import Units.Unit;
 
 public class Crammer implements Solver {

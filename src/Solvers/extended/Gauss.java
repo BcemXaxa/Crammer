@@ -1,4 +1,4 @@
-package Solvers;
+package Solvers.extended;
 
 import Units.Unit;
 
