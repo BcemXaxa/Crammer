@@ -1,8 +1,11 @@
-import Solvers.binary.BinarySolutions;
-import Solvers.unary.UnarySolutions;
-import Utils.ArrayUtils;
-import Utils.JTableUtils;
-import Utils.SwingUtils;
+package interfaces;
+
+import solvers.binary.BinarySolutions;
+import solvers.extended.ExtendedSolutions;
+import solvers.unary.UnarySolutions;
+import utils.ArrayUtils;
+import utils.JTableUtils;
+import utils.SwingUtils;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -52,13 +55,14 @@ public class FormMain extends JFrame {
 		initButton(buttonMatrixReadInput, tableMatrixInput, true);
 		initButton(buttonMatrixWriteInput, tableMatrixInput, false);
 		initButton(buttonMatrixWriteOutput, tableMatrixOutput, false);
+		comboBoxMatrix.setModel(new DefaultComboBoxModel<>(UnarySolutions.values()));
 	}
 
 
 	private JPanel panelSoLE;
 	private JTable tableSoLEInput;
 	private JTable tableSoLEOutput;
-	private JComboBox comboBoxSoLe;
+	private JComboBox<ExtendedSolutions> comboBoxSoLe;
 	private JButton buttonSoLEReadInput;
 	private JButton buttonSoLEWriteInput;
 	private JButton buttonSoLEWriteOutput;
@@ -70,6 +74,7 @@ public class FormMain extends JFrame {
 		initButton(buttonSoLEReadInput, tableSoLEInput, true);
 		initButton(buttonSoLEWriteInput, tableSoLEInput, false);
 		initButton(buttonSoLEWriteOutput, tableSoLEOutput, false);
+		comboBoxSoLe.setModel(new DefaultComboBoxModel<>(ExtendedSolutions.values()));
 	}
 
 
@@ -94,6 +99,7 @@ public class FormMain extends JFrame {
 		initButton(buttonMultiReadInput2, tableMultiInput2,true);
 		initButton(buttonMultiWriteInput2, tableMultiInput2,false);
 		initButton(buttonMultiWriteOutput, tableMultiOutput, false);
+		comboBoxMulti.setModel(new DefaultComboBoxModel<>(BinarySolutions.values()));
 	}
 
 	private void initTable(JTable table) {
@@ -131,5 +137,4 @@ public class FormMain extends JFrame {
 
 		this.pack();
 	}
-
 }

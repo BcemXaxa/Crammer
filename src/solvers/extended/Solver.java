@@ -1,6 +1,6 @@
-package Solvers.extended;
+package solvers.extended;
 
-import Units.Unit;
+import units.Unit;
 
 public interface Solver {
 	Unit[] getSolutions();

@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;

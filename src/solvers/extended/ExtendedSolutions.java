@@ -1,4 +1,4 @@
-package Solvers.extended;
+package solvers.extended;
 
 public enum ExtendedSolutions {
 	GAUSS,

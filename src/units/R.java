@@ -1,4 +1,4 @@
-package Units;
+package units;
 
 public class R implements Unit {
 	public final double r;

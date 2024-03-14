@@ -1,4 +1,4 @@
-package Solvers.unary;
+package solvers.unary;
 
 public enum UnarySolutions {
 	TRANSPOSE,

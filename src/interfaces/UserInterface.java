@@ -1,8 +1,10 @@
-import Solvers.extended.Crammer;
-import Solvers.extended.Solver;
-import Units.R;
-import Units.Unit;
-import Units.Z;
+package interfaces;
+
+import solvers.extended.Crammer;
+import solvers.extended.Solver;
+import units.R;
+import units.Unit;
+import units.Z;
 
 import java.io.InputStream;
 import java.nio.file.Files;

@@ -1,4 +1,5 @@
-import Solvers.extended.Solver;
+import interfaces.UserInterface;
+import solvers.extended.Solver;
 
 import java.util.Locale;
 

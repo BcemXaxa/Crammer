@@ -1,4 +1,4 @@
-package Units;
+package units;
 
 public interface Unit {
 	Unit zeroInstance();

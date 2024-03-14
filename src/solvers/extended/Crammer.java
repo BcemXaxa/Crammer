@@ -1,6 +1,6 @@
-package Solvers.extended;
+package solvers.extended;
 
-import Units.Unit;
+import units.Unit;
 
 public class Crammer implements Solver {
 	private final Unit[][] coefficients;
