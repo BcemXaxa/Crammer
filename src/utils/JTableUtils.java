@@ -144,6 +144,7 @@ public class JTableUtils {
         rowHeader.setCellRenderer(new RowHeaderRenderer());
 
         scrollPane.setRowHeaderView(rowHeader);
+        if(scrollPane.getColumnHeader() != null)
         scrollPane.getRowHeader().getView().setBackground(scrollPane.getColumnHeader().getBackground());
     }
 
